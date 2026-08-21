@@ -69,6 +69,15 @@ h1 em { color: #c96832; font-weight: 500; }
 .input-wrap input { width: 100%; border: 0; outline: 0; background: transparent; color: #193b3b; font-family: 'Fraunces', serif; font-size: 25px; font-variant-numeric: tabular-nums; padding: 10px 14px 10px 10px; }
 .input-wrap input::placeholder { color: #b7b8a9; }
 .field-help { display: block; font-size: 10px; color: #8b958d; margin-top: 6px; }
+.housing-methods { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 10px; }
+.method-option { border: 1px solid rgba(25,59,59,.15); background: #f1eadf; color: #193b3b; text-align: left; padding: 10px 12px; display: flex; flex-direction: column; gap: 3px; transition: border-color .2s ease, background .2s ease, transform .16s ease-out; }
+.method-option strong { font-size: 12px; }
+.method-option span { color: #8b958d; font-size: 10px; }
+.method-option:hover { border-color: #c96832; }
+.method-option:active { transform: scale(.98); }
+.method-option.selected { background: #193b3b; border-color: #193b3b; color: #f8d1ae; box-shadow: inset 3px 0 #c96832; }
+.method-option.selected span { color: #b6c6bb; }
+.method-note { border-left: 2px solid #c96832; padding: 8px 0 8px 10px; margin-top: 8px; }
 .action-row { display: flex; align-items: center; gap: 22px; margin-top: 18px; }
 .primary-action { border: 0; background: #c96832; color: #fffaf2; padding: 13px 17px; display: inline-flex; align-items: center; gap: 10px; font-size: 12px; font-weight: 700; transition: transform .16s ease-out, background .2s ease, box-shadow .2s ease; box-shadow: 0 9px 20px rgba(201,104,50,.2); }
 .primary-action:hover:not(:disabled) { background: #ad5227; box-shadow: 0 12px 24px rgba(201,104,50,.27); }

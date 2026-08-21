@@ -16,6 +16,7 @@ export default function Home() {
   const [basicSalary, setBasicSalary] = useState("");
   const [housing, setHousing] = useState("");
   const [bonus, setBonus] = useState("");
+  const [housingMethod, setHousingMethod] = useState<"percent" | "annual">("annual");
   const [hasCalculated, setHasCalculated] = useState(false);
 
   const values = useMemo(() => {
@@ -23,11 +24,11 @@ export default function Home() {
     const annualHousing = Math.max(0, Number(housing) || 0);
     const annualBonus = Math.max(0, Number(bonus) || 0);
     const gosi = basic * GOSI_RATE;
-    const monthlyHousing = annualHousing / 12;
+    const monthlyHousing = housingMethod === "percent" ? basic * 0.25 : annualHousing / 12;
     const monthlyBonus = annualBonus / 12;
     const net = basic - gosi + monthlyHousing + monthlyBonus;
     return { basic, annualHousing, annualBonus, gosi, monthlyHousing, monthlyBonus, net };
-  }, [basicSalary, housing, bonus]);
+  }, [basicSalary, housing, bonus, housingMethod]);
 
   const canCalculate = values.basic > 0;
 
@@ -39,6 +40,7 @@ export default function Home() {
     setBasicSalary("");
     setHousing("");
     setBonus("");
+    setHousingMethod("annual");
     setHasCalculated(false);
   }
 
@@ -88,11 +90,14 @@ export default function Home() {
                 <span className="input-wrap"><span className="currency-prefix">SAR</span><input inputMode="decimal" type="number" min="0" placeholder="0.00" value={basicSalary} onChange={(e) => { setBasicSalary(e.target.value); setHasCalculated(false); }} /></span>
                 <span className="field-help">GOSI is deducted from this amount.</span>
               </label>
-              <label className="salary-field">
-                <span className="field-label">Housing <small>Annual amount</small></span>
-                <span className="input-wrap"><span className="currency-prefix">SAR</span><input inputMode="decimal" type="number" min="0" placeholder="0.00" value={housing} onChange={(e) => { setHousing(e.target.value); setHasCalculated(false); }} /></span>
-                <span className="field-help">We divide this by 12 automatically.</span>
-              </label>
+              <div className="salary-field housing-field">
+                <span className="field-label">Housing <small>Choose a method</small></span>
+                <div className="housing-methods" role="group" aria-label="Housing calculation method">
+                  <button type="button" className={`method-option ${housingMethod === "percent" ? "selected" : ""}`} onClick={() => { setHousingMethod("percent"); setHasCalculated(false); }}><strong>25%</strong><span>of basic salary</span></button>
+                  <button type="button" className={`method-option ${housingMethod === "annual" ? "selected" : ""}`} onClick={() => { setHousingMethod("annual"); setHasCalculated(false); }}><strong>Annual ÷ 12</strong><span>monthly equivalent</span></button>
+                </div>
+                {housingMethod === "annual" ? <><span className="input-wrap"><span className="currency-prefix">SAR</span><input inputMode="decimal" type="number" min="0" placeholder="0.00" value={housing} onChange={(e) => { setHousing(e.target.value); setHasCalculated(false); }} /></span><span className="field-help">Enter the yearly housing amount; we divide it by 12.</span></> : <span className="field-help method-note">Housing will be calculated as 25% of your monthly basic salary.</span>}
+              </div>
               <label className="salary-field">
                 <span className="field-label">Ramadan / bonus <small>Annual amount</small></span>
                 <span className="input-wrap"><span className="currency-prefix">SAR</span><input inputMode="decimal" type="number" min="0" placeholder="0.00" value={bonus} onChange={(e) => { setBonus(e.target.value); setHasCalculated(false); }} /></span>
@@ -117,7 +122,7 @@ export default function Home() {
           <div className="breakdown">
             <div><span>Basic salary</span><strong>{formatSAR(values.basic)}</strong></div>
             <div><span>GOSI · 9.75%</span><strong className="negative">− {formatSAR(values.gosi)}</strong></div>
-            <div><span>Housing / 12</span><strong>+ {formatSAR(values.monthlyHousing)}</strong></div>
+            <div><span>{housingMethod === "percent" ? "Housing · 25% of basic" : "Housing / 12"}</span><strong>+ {formatSAR(values.monthlyHousing)}</strong></div>
             <div><span>Bonus / 12</span><strong>+ {formatSAR(values.monthlyBonus)}</strong></div>
           </div>
         </section>
