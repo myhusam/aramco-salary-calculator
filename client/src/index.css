@@ -54,7 +54,7 @@ h1 em { color: #c96832; font-weight: 500; }
 .disclaimer { display: flex; gap: 7px; align-items: center; color: #8b958d; font-size: 11px; margin-top: 52px; }
 .calculator-workbench { background: rgba(252,249,243,.92); border: 1px solid rgba(25,59,59,.13); border-left: 3px solid #c96832; box-shadow: 18px 24px 60px rgba(25,59,59,.09); padding: 33px 37px 31px; position: relative; }
 .calculator-workbench::after { content: ''; width: 13px; height: 13px; border-right: 1px solid #c96832; border-top: 1px solid #c96832; position: absolute; right: 18px; top: 18px; }
-.workbench-topline { display: flex; justify-content: space-between; align-items: flex-start; border-bottom: 1px solid rgba(25,59,59,.13); padding-bottom: 21px; }
+.workbench-topline { display: flex; justify-content: space-between; align-items: flex-start; border-bottom: 1px solid rgba(25,59,59,.13); padding-bottom: 14px; }
 .section-kicker { color: #c96832; margin-bottom: 9px; }
 .workbench-topline h2 { font-family: 'Fraunces', serif; font-size: 28px; line-height: 1.1; letter-spacing: -.035em; margin: 0; font-weight: 600; }
 .workbench-icon { color: #c96832; }

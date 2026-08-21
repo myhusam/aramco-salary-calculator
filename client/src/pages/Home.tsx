@@ -127,7 +127,6 @@ export default function Home() {
             <div className="workbench-topline">
               <div>
                 <p className="section-kicker">01 / Your inputs</p>
-                <h2 id="calculator-title">Build your monthly picture</h2>
               </div>
               <Calculator className="workbench-icon" size={24} strokeWidth={1.5} />
             </div>

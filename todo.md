@@ -19,3 +19,9 @@
 - [x] Remove the left introductory hero content shown in the reference image.
 - [x] Rebalance the remaining calculator and result layout for desktop and mobile.
 - [x] Verify the simplified layout and save a new checkpoint.
+
+## Workbench Heading Simplification
+
+- [x] Remove the “Build your monthly picture” heading.
+- [x] Rebalance the workbench spacing and verify the updated layout.
+- [x] Save and deliver the updated checkpoint.
