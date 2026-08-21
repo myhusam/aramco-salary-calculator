@@ -1,6 +1,6 @@
 // Design philosophy: Desert Ledger — editorial finance utility with parchment surfaces, petrol ink, burnt-amber signals, and a clear split workbench.
 import { useMemo, useState } from "react";
-import { ArrowUpRight, Calculator, CircleHelp, FileCheck2, FileUp, RotateCcw, ShieldCheck, Sparkles, X } from "lucide-react";
+import { ArrowUpRight, Calculator, FileCheck2, FileUp, RotateCcw, ShieldCheck, Sparkles, X } from "lucide-react";
 import { trpc } from "@/lib/trpc";
 
 const GOSI_RATE = 0.0975;
@@ -123,20 +123,6 @@ export default function Home() {
         </header>
 
         <section className="hero-grid">
-          <div className="intro-column">
-            <div className="eyebrow"><span className="eyebrow-dot" /> Payroll, made legible</div>
-            <h1>See what lands<br /><em>in your month.</em></h1>
-            <p className="intro-copy">A simple estimate of your Aramco monthly net salary. Enter your basic salary and annual allowances; we’ll normalize the yearly figures for you.</p>
-            <div className="rule-note">
-              <div className="rule-marker" />
-              <div>
-                <p>One clean calculation</p>
-                <span>Basic salary − 9.75% GOSI<br />+ monthly housing + monthly bonus</span>
-              </div>
-            </div>
-            <p className="disclaimer"><CircleHelp size={14} /> Estimate only. Your official payslip remains the source of truth.</p>
-          </div>
-
           <section className="calculator-workbench" aria-labelledby="calculator-title">
             <div className="workbench-topline">
               <div>

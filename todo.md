@@ -13,3 +13,9 @@
 - [x] Add explicit privacy messaging explaining certificate processing and storage considerations.
 - [x] Verify the certificate upload panel at a narrow mobile breakpoint.
 - [x] Save the certificate feature checkpoint and deliver it.
+
+## Layout Simplification
+
+- [x] Remove the left introductory hero content shown in the reference image.
+- [x] Rebalance the remaining calculator and result layout for desktop and mobile.
+- [x] Verify the simplified layout and save a new checkpoint.
