@@ -16,6 +16,7 @@ export default function Home() {
   const [basicSalary, setBasicSalary] = useState("");
   const [housing, setHousing] = useState("");
   const [bonus, setBonus] = useState("");
+  const [bonusCustomized, setBonusCustomized] = useState(false);
   const [housingMethod, setHousingMethod] = useState<"percent" | "annual">("annual");
   const [hasCalculated, setHasCalculated] = useState(false);
 
@@ -40,6 +41,7 @@ export default function Home() {
     setBasicSalary("");
     setHousing("");
     setBonus("");
+    setBonusCustomized(false);
     setHousingMethod("annual");
     setHasCalculated(false);
   }
@@ -87,7 +89,7 @@ export default function Home() {
             <div className="input-stack">
               <label className="salary-field">
                 <span className="field-label">Basic salary <small>Monthly</small></span>
-                <span className="input-wrap"><span className="currency-prefix">SAR</span><input inputMode="decimal" type="number" min="0" placeholder="0.00" value={basicSalary} onChange={(e) => { setBasicSalary(e.target.value); setHasCalculated(false); }} /></span>
+                <span className="input-wrap"><span className="currency-prefix">SAR</span><input inputMode="decimal" type="number" min="0" placeholder="0.00" value={basicSalary} onChange={(e) => { const nextBasic = e.target.value; setBasicSalary(nextBasic); if (!bonusCustomized) setBonus(nextBasic); setHasCalculated(false); }} /></span>
                 <span className="field-help">GOSI is deducted from this amount.</span>
               </label>
               <div className="salary-field housing-field">
@@ -100,8 +102,8 @@ export default function Home() {
               </div>
               <label className="salary-field">
                 <span className="field-label">Ramadan / bonus <small>Annual amount</small></span>
-                <span className="input-wrap"><span className="currency-prefix">SAR</span><input inputMode="decimal" type="number" min="0" placeholder="0.00" value={bonus} onChange={(e) => { setBonus(e.target.value); setHasCalculated(false); }} /></span>
-                <span className="field-help">Optional — also normalized to a monthly figure.</span>
+                <span className="input-wrap"><span className="currency-prefix">SAR</span><input inputMode="decimal" type="number" min="0" placeholder="0.00" value={bonus} onChange={(e) => { setBonus(e.target.value); setBonusCustomized(true); setHasCalculated(false); }} /></span>
+                <span className="field-help">Defaults to basic salary; edit it if your annual bonus differs.</span>
               </label>
             </div>
 
