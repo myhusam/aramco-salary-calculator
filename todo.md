@@ -25,3 +25,10 @@
 - [x] Remove the “Build your monthly picture” heading.
 - [x] Rebalance the workbench spacing and verify the updated layout.
 - [x] Save and deliver the updated checkpoint.
+
+## Remove Certificate Upload
+
+- [x] Remove the salary-certificate upload and extraction UI.
+- [x] Remove extraction state, handlers, and unused imports from the calculator page.
+- [x] Remove the unused certificate router and route registration.
+- [x] Verify the manual calculator and responsive layout, then save a checkpoint.
